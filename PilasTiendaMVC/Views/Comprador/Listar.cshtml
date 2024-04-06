@@ -1,0 +1,36 @@
+﻿@model List<PilasTiendaMVC.Pilas.Entities.Pila>
+
+@{
+    Layout = "~/Views/Shared/comp.cshtml";
+
+}
+
+<h2>Listado de Pilas</h2>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <p>@ViewBag.ErrorMessage</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Compras</th>
+        </tr>
+        @foreach (var pila in Model)
+        {
+            <tr>
+                <td>@pila.PilaId</td>
+                <td>@pila.Nombre</td>
+                <td>@pila.Precio</td>
+                <td>
+                    @Html.ActionLink("Agregar carrito", "MostrarCarrito", new { id = pila.PilaId })
+                </td>
+            </tr>
+        }
+    </table>
+}
+

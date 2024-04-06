@@ -1,0 +1,50 @@
+﻿@model List<PilasTiendaMVC.Pilas.Entities.Pila>
+
+
+@{
+    Layout = "~/Views/Shared/maestra.cshtml";
+
+}
+
+
+<h2>Listado de Pilas</h2>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <p>@ViewBag.ErrorMessage</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Presentacion</th>
+            <th>Fecha de Caducidad</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+            <th>Cantidad</th>
+        </tr>
+        @foreach (var pila in Model)
+        {
+            <tr>
+                <td>@pila.PilaId</td>
+                <td>@pila.Nombre</td>
+                <td>@pila.Descripcion</td>
+                <td>@pila.Fecha</td>
+                <td>@pila.Precio</td>
+                <td><img src="@Url.Content(pila.Imagen)" width="100"></td>
+                <td>@pila.Stock</td>
+                <td>
+                <td>
+                    <button class="btn btn-success text-light">@Html.ActionLink("Editar", "Editar", new { id = pila.PilaId })</button>
+                    <button class="btn btn-danger text-light">@Html.ActionLink("Eliminar", "Eliminar", new { id = pila.PilaId })</button>
+                    @* Ve las compras realizadas por un Usuario del producto seleccionado *@                        
+                    <button class="btn btn-primary text-light">@Html.ActionLink("Ver ventas", "ObtenerUsuarios", new { idProducto = pila.PilaId})</button>
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+@Html.ActionLink("Menos detalles", "Listar")

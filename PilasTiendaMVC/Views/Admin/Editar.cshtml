@@ -1,0 +1,44 @@
+﻿@model PilasTiendaMVC.Pilas.Entities.Pila
+
+
+
+<h2>Editar Producto</h2>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <p>@ViewBag.ErrorMessage</p>
+}
+else
+{
+    using (Html.BeginForm("Editar", "Admin", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.PilaId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre)
+            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descripcion)
+            @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fecha)
+            @Html.TextBoxFor(model => model.Fecha, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Imagen)
+            @Html.TextBoxFor(model => model.Imagen, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Stock)
+            @Html.TextBoxFor(model => model.Stock, new { @class = "form-control" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    }
+}

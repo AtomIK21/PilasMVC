@@ -1,0 +1,15 @@
+﻿
+@{
+    Layout = "~/Views/Shared/maestra.cshtml";
+
+}
+
+<h2>Mensaje de bienvenida</h2>
+
+<p>Bienvenido Administrador, @Session["Username"]</p>
+
+@* Botón de Logout *@
+@using (Html.BeginForm("Logout", "Login", FormMethod.Post))
+{
+    <input type="submit" class="btn btn-danger" value="Cerrar sesion">
+}

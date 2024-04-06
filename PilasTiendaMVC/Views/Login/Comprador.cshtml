@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/comp.cshtml";
+
+}
+
+<h2>Mensaje de bienvenida</h2>
+
+<p>Bienvenido Comprador, @Session["Username"]</p>
+
+@* Botón de Logout *@
+@using (Html.BeginForm("Logout", "Login", FormMethod.Post))
+{
+    <input type="submit" class="btn btn-danger" value="Cerrar sesion">
+}
